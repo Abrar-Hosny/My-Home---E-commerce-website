@@ -1,5 +1,6 @@
 <?php
 $host="localhost";
+$dsn='';
 $dbname="order_db";
 $username="root";
 $password="";

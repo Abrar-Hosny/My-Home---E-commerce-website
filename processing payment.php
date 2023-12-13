@@ -1,5 +1,4 @@
 <?php
-
 // validate the name
 // print_r($_POST);
 
