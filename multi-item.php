@@ -2,7 +2,6 @@
 // validate the name
 // print_r($_POST);
 
-$orders=$_POST["orders"];
 
 $order = "";
 if(empty($_POST["name"])){
@@ -89,7 +88,9 @@ $stmt -> bind_param("ssss" ,
 $_POST["name"] , $_POST["email"] ,$_POST["location"],$order );
 
 $stmt->execute();
-echo "succ message" ; 
+
+header("Location: welcome.html ")      ;
+
 
 
 

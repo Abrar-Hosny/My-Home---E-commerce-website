@@ -117,6 +117,62 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 
-      
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Add event listener to checkboxes
+                const checkboxes = document.querySelectorAll('input[name="orders[]"]');
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.addEventListener('change', function () {
+                        updateTotalPrice();
+                    });
+                });
+
+                // Function to update the total price based on selected options
+                function updateTotalPrice() {
+                    const checkboxes = document.querySelectorAll('input[name="orders[]"]:checked');
+                    let totalPrice = 0;
+    
+                    checkboxes.forEach(function (checkbox) {
+                        // You can customize the pricing logic based on checkbox values
+                        switch (checkbox.value) {
+                            case "#343437":
+                                totalPrice += 10; // Update with your actual pricing
+                                break;
+                            case "#019283":
+                                totalPrice += 15; // Update with your actual pricing
+                                break;
+
+                                case "#768930":
+                                totalPrice += 15; // Update with your actual pricing
+                                break;
+                                case "#637282":
+                                totalPrice += 64; // Update with your actual pricing
+                                break;
+                                case "#897654":
+                                totalPrice += 4848; // Update with your actual pricing
+                                break;
+                                case "#435682":
+                                totalPrice += 110; // Update with your actual pricing
+                                break;
+                                case "#199234":
+                                totalPrice += 10; // Update with your actual pricing
+                                break;
+                               
+                                case "#547263":
+                                totalPrice += 23; // Update with your actual pricing
+                                break;
+                                case "#464743":
+                                totalPrice += 23; // Update with your actual pricing
+                                break;
+                            // Add more cases for other checkbox values
+                            // ...
+                        }
+                    });
+
+                    // Display the total price
+                    console.log('Total Price: $' + totalPrice); // You can replace this with your preferred way of displaying the total price
+                }
+            });
+        </script>
 </body>
 </html>

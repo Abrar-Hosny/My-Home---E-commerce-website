@@ -1,4 +1,6 @@
 <?php
+
+// $is_invalid =false ;
 // when click and the form is sumitted the method will be return
 // here to check that we sumit the form
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -28,6 +30,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         // with the ones that in the table  password hash
 
         if(password_verify($_POST["password"],$user["password_hash"])){
+            session_start();
+            $_SESSION["user_id"] =$user["id"];
             header("Location: welcome.html ")      ;
         }
         else{
@@ -37,6 +41,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         }
 
     }
+
+    // $is_invalid =true;
 
 
 }
@@ -70,19 +76,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 
 <body class="bg-gray-100 h-screen flex items-center justify-center">
-    
+   
 
 <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
    
 <!-- instead of submit the form into separate script like sign up 
 here we willnot need to add action here
 -->
+
+
 <form class="space-y-6" method="POST" novalidate>
         <h5 class="text-xl font-medium text-gray-900 dark:text-white">login to our platform</h5>
        
         <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" >
+            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" 
+            value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
         </div>
         <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
